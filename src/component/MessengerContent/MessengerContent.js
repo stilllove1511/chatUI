@@ -40,20 +40,21 @@ function MessageContent(){
       setInput({isMe:true, content:''})
       inputRef.current.focus()
       milestones.current.scrollIntoView()
-      console.log(milestones.current)
+    }
+
+    const handleMessage = ({detail}) =>{
+      setmessageList(prev => prev.length < 50? [
+          ...prev,
+          {
+            isMe: false,
+            content:  detail
+          }
+      ]:[])
+      milestones.current.scrollIntoView()
     }
   
     useEffect(() => {
       inputRef.current.focus()
-      const handleMessage = ({detail}) =>{
-        setmessageList(prev => prev.length < 50? [
-            ...prev,
-            {
-              isMe: false,
-              content:  detail
-            }
-        ]:[])
-      }
       const handleClickSend = (e) => {
         if(e.keyCode===13){
           buttonRef.current.click()
@@ -80,7 +81,6 @@ function MessageContent(){
             userList.map((user) => (
               <span onClick = {()=> {
                 setId(user.id)
-                console.log(activeId)
               }}>
                 <User 
                   key={user.id} 
@@ -110,8 +110,8 @@ function MessageContent(){
                       </MessageItem>
                   </>
               ))}
+              <div ref={milestones}></div>
             </div>
-            <div ref={milestones}></div>
           </div>
 
           {/*message input */}
