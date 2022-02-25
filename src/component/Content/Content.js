@@ -91,6 +91,7 @@ function Content(){
         
         {/* ms list */}
         <div className={style.messageList}>
+          
           {/* stt bar */}
           <div className={style.sttBar}>
                 {userList[activeId-1].name}
@@ -109,8 +110,7 @@ function Content(){
             </div>
           </div>
 
-          {/* input */}
-
+          {/*ms input */}
           <div className={style.msInput}>
             <input
               ref={inputRef}
