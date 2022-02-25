@@ -8,15 +8,15 @@ import style from '../componentCSS/Content.module.css'
 const channels = [
   {
     id:1,
-    userName: 'Linh'
+    name: 'Linh'
   },
   {
     id:2,
-    userName: 'My'
+    name: 'My'
   },
   {
     id:3,
-    userName: 'Mai Anh'
+    name: 'Mai Anh'
   }
 ]
 
@@ -77,7 +77,7 @@ function Content(){
                 key={channel.id} 
                 onClick={() => {setId(channel.id)}}
               >
-                Kênh {channel.id}
+                {channel.name}
               </li>
             ))}
           </ul>
@@ -85,6 +85,24 @@ function Content(){
         
         {/* detail */}
         <div className={style.detail}>
+          {/* stt bar */}
+          <div className={style.sttBar}>
+                {channels[channelId-1].name}
+          </div>
+          
+          {/* messages */}
+          {messages.map((message, index)=>(
+              <>
+                  <Messgaes key={index}>
+                    {message.isFromMe ? 
+                      'Tôi: ':
+                      channels[channelId-1].name+': '} 
+                    {message.content}
+                  </Messgaes>
+                  <br/>
+              </>
+          ))}
+
           {/* input */}
           <div className={style.msInput}>
             <input
@@ -95,18 +113,6 @@ function Content(){
             />
             <button className={style.msBtn} ref={buttonRef} onClick={handleSubmit}>GỬI</button>          
           </div>
-          {/* messages */}
-          {messages.map((message, index)=>(
-              <>
-                  <Messgaes key={index}>
-                    {message.isFromMe ? 
-                      'Tôi: ':
-                      channels[channelId-1].userName+': '} 
-                    {message.content}
-                  </Messgaes>
-                  <br/>
-              </>
-          ))}
         </div>
         
       </div>
