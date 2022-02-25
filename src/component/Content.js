@@ -3,7 +3,7 @@ import {useState, useEffect, useRef} from 'react'
 import clsx from 'clsx';
 
 import Messgaes from './Messages'
-import ContentStyle from '../componentCSS/Content.module.css'
+import style from '../componentCSS/Content.module.css'
 
 const channels = [
   {
@@ -64,15 +64,15 @@ function Content(){
     },[channelId])
 
   return (
-      <div className={ContentStyle.content} >
+      <div className={style.content} >
       
         {/* channel */}
-        <div className={ContentStyle.channels}>
-          <ul className={ContentStyle.p0}>
+        <div className={style.channels}>
+          <ul className={clsx('p-0', 'm-0')}>
             {channels.map((channel) => (
               <li 
-                className = {clsx(ContentStyle.card, {
-                  [ContentStyle.active] : channel.id===channelId
+                className = {clsx(style.card, {
+                  [style.active] : channel.id===channelId
                 })}
                 key={channel.id} 
                 onClick={() => {setId(channel.id)}}
@@ -84,18 +84,18 @@ function Content(){
         </div>
         
         {/* detail */}
-        <div className={ContentStyle.detail}>
-          <span> Tin nhắn: </span>
-          <br/>
+        <div className={style.detail}>
           {/* input */}
-          <input
-            ref={inputRef}
-            value={inputMessage.content}
-            onChange={e => setInput({isFromMe: true, content:e.target.value })}
-          />
-          <button ref={buttonRef} onClick={handleSubmit}>Add</button>
-          <br/>
-        {/* messages */}
+          <div className={style.msInput}>
+            <input
+              ref={inputRef}
+              className={style.msInputBar}
+              value={inputMessage.content}
+              onChange={e => setInput({isFromMe: true, content:e.target.value })}
+            />
+            <button className={style.msBtn} ref={buttonRef} onClick={handleSubmit}>GỬI</button>          
+          </div>
+          {/* messages */}
           {messages.map((message, index)=>(
               <>
                   <Messgaes key={index}>
