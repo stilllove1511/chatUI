@@ -107,9 +107,6 @@ function Content(){
           </div>
 
           {/* input */}
-          <div className={style.underInput}>
-
-          </div >
 
           <div className={style.msInput}>
             <input

@@ -1,16 +1,14 @@
 .msItem{
     align-self: flex-start;
-    background-color: white;
+    background-color: #e4e6eb;
     padding: 12px;
     border-radius: 6px;
     color: #001a33;
     margin: 0 12px;
-    border: 1px solid #001a33;
 }
 
 .isMe{
     align-self: flex-end;
-    background-color: #e5efff;
-    border: 1px solid white;
+    background-color: #e4e6eb;
 }
   
