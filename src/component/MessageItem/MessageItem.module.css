@@ -5,6 +5,8 @@
     border-radius: 6px;
     color: #001a33;
     margin: 2px 12px;
+    max-width: 0.8;
+    word-wrap: break-word;
 }
 
 .isMe{
