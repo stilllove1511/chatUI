@@ -88,7 +88,12 @@ function Content(){
     
         {messages.map((message, index)=>(
             <>
-                <span key={index}>{message.isFromMe?'Tôi: ':channels[channelId-1].userName+': '} {message.content} </span>
+                <span key={index}>
+                  {message.isFromMe ? 
+                    'Tôi: ':
+                    channels[channelId-1].userName+': '} 
+                  {message.content}
+                </span>
                 <br/>
             </>
         ))}
