@@ -1,5 +1,6 @@
 
 import {useState, useEffect, useRef} from 'react'
+import Messgaes from './Messages'
 
 const channels = [
   {
@@ -88,12 +89,12 @@ function Content(){
     
         {messages.map((message, index)=>(
             <>
-                <span key={index}>
+                <Messgaes key={index}>
                   {message.isFromMe ? 
                     'Tôi: ':
                     channels[channelId-1].userName+': '} 
                   {message.content}
-                </span>
+                </Messgaes>
                 <br/>
             </>
         ))}
