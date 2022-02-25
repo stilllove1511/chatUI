@@ -1,0 +1,46 @@
+.p0{
+  padding: 0;
+}
+
+.content{
+    box-sizing: border-box;
+    -webkit-box-flex: 0;
+    -webkit-box-direction: normal;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    flex: 0 1 auto;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    -webkit-box-flex: 0;
+    flex-direction: row;
+    flex-direction: row;
+    box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: wrap; 
+}
+  
+.channels{
+
+}
+.detail{
+  background-color: #f4f4f4;
+  width: 100%;
+}
+.card{
+  display: block;
+  height: 72px;
+  width: 312px;
+  padding: 0px 12px;
+
+}
+.cardHover{
+  background-color: #f4f4f4 ;
+}
+.active{
+  background-color: #e5efff ;
+}
