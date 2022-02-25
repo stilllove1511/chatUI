@@ -26,6 +26,8 @@
 
 }
 .detail{
+  display: flex;
+  flex-direction: column;
   background-color: #f4f4f4;
   width: 100%;
   border-color: #f4f4f4;
@@ -42,6 +44,24 @@
   font-size: 18px;
   font-weight: 600;
   border-bottom: 1px solid #e1e4ea;
+}
+
+.msContainer{
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.msWrapper{
+  overflow-y: scroll;
+  max-width: inherit;
+}
+
+.underInput{
+  height: calc(25px + 12px + 18px);
 }
 
 .msInput{
@@ -80,4 +100,11 @@
 }
 .active{
   background-color: #e5efff ;
+}
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color: gray;
 }

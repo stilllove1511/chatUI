@@ -14,8 +14,8 @@ function emitMessage(id){
   }, 500)
 }
 
-emitMessage(1)
-emitMessage(2)
+// emitMessage(1)
+// emitMessage(2)
 emitMessage(3)
 
 ReactDOM.render(

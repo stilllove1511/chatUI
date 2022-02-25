@@ -40,7 +40,7 @@ function Content(){
     useEffect(() => {
       inputRef.current.focus()
       const handleMassage = ({detail}) =>{
-        setMessages(prev => prev.length < 20? [
+        setMessages(prev => prev.length < 50? [
             ...prev,
             {
               isFromMe: false,
@@ -90,20 +90,28 @@ function Content(){
                 {channels[channelId-1].name}
           </div>
           
-          {/* messages */}
-          {messages.map((message, index)=>(
-              <>
-                  <Messgaes key={index}>
-                    {message.isFromMe ? 
-                      'Tôi: ':
-                      channels[channelId-1].name+': '} 
-                    {message.content}
-                  </Messgaes>
-                  <br/>
-              </>
-          ))}
+          {/* ms container */}
+          <div className={style.msContainer}>
+            <div className={style.msWrapper}>
+              {messages.map((message, index)=>(
+                  <>
+                      <Messgaes key={index}>
+                        {message.isFromMe ? 
+                          'Tôi: ':
+                          channels[channelId-1].name+': '} 
+                        {message.content}
+                      </Messgaes>
+                      <br/>
+                  </>
+              ))}
+            </div>
+          </div>
 
           {/* input */}
+          <div className={style.underInput}>
+
+          </div >
+
           <div className={style.msInput}>
             <input
               ref={inputRef}
