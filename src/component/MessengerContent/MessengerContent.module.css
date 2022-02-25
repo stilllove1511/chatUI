@@ -41,7 +41,7 @@
   border-bottom: 1px solid #e4e6eb;
 }
 
-.msContainer{
+.messageContainer{
   height: inherit;
   display: flex;
   flex-direction: column;
@@ -49,21 +49,21 @@
   overflow: hidden;
 }
 
-.msWrapper{
+.messageWrapper{
   overflow-y: scroll;
   max-width: inherit;
   display: flex;
   flex-direction: column;
 }
 
-.msInput{
+.messageInput{
   display: flex;
   width: inherit;
   bottom: 0;
   border-top: 1px solid #e4e6eb ;
 }
 
-.msInputBar{
+.messageInputBar{
   border: none;
   outline: none;
   height: 25px;
@@ -72,7 +72,7 @@
   width: inherit;
 }
 
-.msBtn{
+.messageBtn{
   border: none;
   background-color: white;
   border-radius: 0px;

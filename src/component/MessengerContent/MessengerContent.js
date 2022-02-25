@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import User from '../User/User';
 import MessageItem from '../MessageItem/MessageItem'
-import style from './Content.module.css'
+import style from './MessengerContent.module.css'
 
 const userList = [
   {
@@ -26,6 +26,7 @@ const userList = [
 function Content(){
     const inputRef = useRef()
     const buttonRef = useRef()
+    const milestones = useRef()
     const [activeId,setId]= useState(1)
     const [inputMessage, setInput] = useState({isMe: true, content:''})
     const [messageList, setmessageList] = useState([])
@@ -38,11 +39,13 @@ function Content(){
       ])
       setInput({isMe:true, content:''})
       inputRef.current.focus()
+      milestones.current.scrollIntoView()
+      console.log(milestones.current)
     }
   
     useEffect(() => {
       inputRef.current.focus()
-      const handleMassage = ({detail}) =>{
+      const handleMessage = ({detail}) =>{
         setmessageList(prev => prev.length < 50? [
             ...prev,
             {
@@ -57,12 +60,12 @@ function Content(){
         }
       }
       
-      window.addEventListener(`user-${activeId}`, handleMassage)
+      window.addEventListener(`user-${activeId}`, handleMessage)
       window.addEventListener('keydown', handleClickSend)
       setmessageList([])
 
       return () => {
-        window.removeEventListener(`user-${activeId}`,handleMassage)
+        window.removeEventListener(`user-${activeId}`,handleMessage)
         window.removeEventListener(`keydown`,handleClickSend)
       }
     },[activeId])
@@ -89,7 +92,7 @@ function Content(){
           }
         </div>
         
-        {/* ms list */}
+        {/* message list */}
         <div className={style.messageList}>
           
           {/* stt bar */}
@@ -97,9 +100,9 @@ function Content(){
                 {userList[activeId-1].name}
           </div>
           
-          {/* ms container */}
-          <div className={style.msContainer}>
-            <div className={style.msWrapper}>
+          {/* message container */}
+          <div className={style.messageContainer}>
+            <div className={style.messageWrapper}>
               {messageList.map((message, index)=>(
                   <>
                       <MessageItem key={index} isMe={message.isMe} >
@@ -108,17 +111,18 @@ function Content(){
                   </>
               ))}
             </div>
+            <div ref={milestones}></div>
           </div>
 
-          {/*ms input */}
-          <div className={style.msInput}>
+          {/*message input */}
+          <div className={style.messageInput}>
             <input
               ref={inputRef}
-              className={style.msInputBar}
+              className={style.messageInputBar}
               value={inputMessage.content}
               onChange={e => setInput({isMe: true, content:e.target.value })}
             />
-            <button className={style.msBtn} ref={buttonRef} onClick={handleSubmit}>GỬI</button>          
+            <button className={style.messageBtn} ref={buttonRef} onClick={handleSubmit}>GỬI</button>          
           </div>
         </div>
         
