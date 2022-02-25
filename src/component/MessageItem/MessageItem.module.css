@@ -4,11 +4,10 @@
     padding: 12px;
     border-radius: 6px;
     color: #001a33;
-    margin: 0 12px;
+    margin: 2px 12px;
 }
 
 .isMe{
     align-self: flex-end;
-    background-color: #e4e6eb;
 }
   

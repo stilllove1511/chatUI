@@ -1,0 +1,11 @@
+.card{
+    display: block;
+    height: 72px;
+    width: 312px;
+    padding: 0px 12px;
+    line-height: 72px;
+}
+
+.active{
+    background-color: #e4e6eb ;
+}

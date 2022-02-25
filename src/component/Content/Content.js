@@ -2,10 +2,11 @@
 import {useState, useEffect, useRef} from 'react'
 import clsx from 'clsx';
 
-import MessageItem from './MessageItem'
-import style from '../componentCSS/Content.module.css'
+import User from '../User/User';
+import MessageItem from '../MessageItem/MessageItem'
+import style from './Content.module.css'
 
-const channels = [
+const userList = [
   {
     id:1,
     name: 'Linh'
@@ -25,7 +26,7 @@ const channels = [
 function Content(){
     const inputRef = useRef()
     const buttonRef = useRef()
-    const [channelId,setId]= useState(1)
+    const [activeId,setId]= useState(1)
     const [inputMessage, setInput] = useState({isMe: true, content:''})
     const [messageList, setmessageList] = useState([])
     const handleSubmit = () => {
@@ -55,41 +56,44 @@ function Content(){
           buttonRef.current.click()
         }
       }
-      window.addEventListener(`channel-${channelId}`, handleMassage)
+      
+      window.addEventListener(`user-${activeId}`, handleMassage)
       window.addEventListener('keydown', handleClickSend)
       setmessageList([])
 
       return () => {
-        window.removeEventListener(`channel-${channelId}`,handleMassage)
+        window.removeEventListener(`user-${activeId}`,handleMassage)
         window.removeEventListener(`keydown`,handleClickSend)
       }
-    },[channelId])
+    },[activeId])
 
   return (
       <div className={style.content} >
       
-        {/* channel */}
-        <div className={style.channels}>
-          <ul className={clsx('p-0', 'm-0')}>
-            {channels.map((channel,index) => (
-              <li 
-                className = {clsx(style.card, {
-                  [style.active] : channel.id===channelId
-                })}
-                key={index} 
-                onClick={() => {setId(channel.id)}}
-              >
-                {channel.name}
-              </li>
-            ))}
-          </ul>
+        {/* user list */}
+
+        <div className={clsx('p-0', 'm-0',style.userList)}>
+          {
+            userList.map((user) => (
+              <span onClick = {()=> {
+                setId(user.id)
+                console.log(activeId)
+              }}>
+                <User 
+                  key={user.id} 
+                  data={user} 
+                  isActived={user.id===activeId?true:false} 
+                />
+              </span>
+            ))
+          }
         </div>
         
-        {/* detail */}
-        <div className={style.detail}>
+        {/* ms list */}
+        <div className={style.messageList}>
           {/* stt bar */}
           <div className={style.sttBar}>
-                {channels[channelId-1].name}
+                {userList[activeId-1].name}
           </div>
           
           {/* ms container */}
@@ -100,7 +104,6 @@ function Content(){
                       <MessageItem key={index} isMe={message.isMe} >
                         {message.content}
                       </MessageItem>
-                      <br/>
                   </>
               ))}
             </div>

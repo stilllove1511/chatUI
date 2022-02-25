@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import style from '../componentCSS/MessageItem.module.css'
+import style from './MessageItem.module.css'
 
 function MessageItem ({isMe, children}) {
     return(
