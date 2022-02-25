@@ -2,7 +2,7 @@
 import {useState, useEffect, useRef} from 'react'
 import clsx from 'clsx';
 
-import Messgaes from './Messages'
+import MessageItem from './MessageItem'
 import style from '../componentCSS/Content.module.css'
 
 const channels = [
@@ -26,24 +26,26 @@ function Content(){
     const inputRef = useRef()
     const buttonRef = useRef()
     const [channelId,setId]= useState(1)
-    const [inputMessage, setInput] = useState({})
-    const [messages, setMessages] = useState([])
+    const [inputMessage, setInput] = useState({isMe: true, content:''})
+    const [messageList, setmessageList] = useState([])
     const handleSubmit = () => {
-      setMessages(prev => [
+      if(inputMessage.content==='') 
+        return 1
+      setmessageList(prev => [
         ...prev,
         inputMessage
       ])
-      setInput({content:''})
+      setInput({isMe:true, content:''})
       inputRef.current.focus()
     }
   
     useEffect(() => {
       inputRef.current.focus()
       const handleMassage = ({detail}) =>{
-        setMessages(prev => prev.length < 50? [
+        setmessageList(prev => prev.length < 50? [
             ...prev,
             {
-              isFromMe: false,
+              isMe: false,
               content:  detail
             }
         ]:[])
@@ -55,7 +57,7 @@ function Content(){
       }
       window.addEventListener(`channel-${channelId}`, handleMassage)
       window.addEventListener('keydown', handleClickSend)
-      setMessages([])
+      setmessageList([])
 
       return () => {
         window.removeEventListener(`channel-${channelId}`,handleMassage)
@@ -69,12 +71,12 @@ function Content(){
         {/* channel */}
         <div className={style.channels}>
           <ul className={clsx('p-0', 'm-0')}>
-            {channels.map((channel) => (
+            {channels.map((channel,index) => (
               <li 
                 className = {clsx(style.card, {
                   [style.active] : channel.id===channelId
                 })}
-                key={channel.id} 
+                key={index} 
                 onClick={() => {setId(channel.id)}}
               >
                 {channel.name}
@@ -93,14 +95,11 @@ function Content(){
           {/* ms container */}
           <div className={style.msContainer}>
             <div className={style.msWrapper}>
-              {messages.map((message, index)=>(
+              {messageList.map((message, index)=>(
                   <>
-                      <Messgaes key={index}>
-                        {message.isFromMe ? 
-                          'Tôi: ':
-                          channels[channelId-1].name+': '} 
+                      <MessageItem key={index} isMe={message.isMe} >
                         {message.content}
-                      </Messgaes>
+                      </MessageItem>
                       <br/>
                   </>
               ))}
@@ -117,7 +116,7 @@ function Content(){
               ref={inputRef}
               className={style.msInputBar}
               value={inputMessage.content}
-              onChange={e => setInput({isFromMe: true, content:e.target.value })}
+              onChange={e => setInput({isMe: true, content:e.target.value })}
             />
             <button className={style.msBtn} ref={buttonRef} onClick={handleSubmit}>GỬI</button>          
           </div>

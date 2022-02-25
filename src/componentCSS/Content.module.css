@@ -58,6 +58,8 @@
 .msWrapper{
   overflow-y: scroll;
   max-width: inherit;
+  display: flex;
+  flex-direction: column;
 }
 
 .underInput{
