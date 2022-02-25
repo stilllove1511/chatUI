@@ -23,7 +23,7 @@ const userList = [
 
 
 
-function Content(){
+function MessageContent(){
     const inputRef = useRef()
     const buttonRef = useRef()
     const milestones = useRef()
@@ -131,4 +131,4 @@ function Content(){
 }
       
 
-export default Content
+export default MessageContent
