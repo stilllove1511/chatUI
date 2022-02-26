@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import clsx from 'clsx'
 
 import style from './MessageItem.module.css'
@@ -10,4 +11,4 @@ function MessageItem ({isMe, children}) {
     )
 }
 
-export default MessageItem
+export default memo(MessageItem)

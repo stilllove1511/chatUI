@@ -79,6 +79,14 @@
   font-weight: 700;
 }
 
+.messageBtn:focus-visible{
+  outline: none;
+}
+
+.actived{
+  background-color: #e5efff;
+}
+
 ::-webkit-scrollbar{
   width: 10px;
 }

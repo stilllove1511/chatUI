@@ -5,12 +5,13 @@
     border-radius: 6px;
     color: #001a33;
     margin: 2px 12px;
-    max-width: 0.8;
+    max-width: 50%;
     word-wrap: break-word;
     word-break: break-word;
 }
 
 .isMe{
     align-self: flex-end;
+    background-color: #e5efff;
 }
   

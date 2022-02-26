@@ -11,7 +11,7 @@ function emitMessage(id){
         detail: `Tin nhắn từ kênh ${id}`
       })
     )
-  }, 500)
+  }, 2000)
 }
 
 // emitMessage(1)

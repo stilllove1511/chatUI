@@ -1,7 +1,7 @@
 
 import logo from './logo.svg';
 import './App.css';
-import MessengerContent from './component/MessengerContent/MessengerContent.js'
+import MessengerContent from './components/MessengerContent/MessengerContent.js'
 
 function App() {
   return(
