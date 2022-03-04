@@ -1,11 +1,11 @@
 
 import logo from './logo.svg';
 import './App.css';
-import Content from './component/Content.js'
+import MessengerContent from './components/MessengerContent/MessengerContent.js'
 
 function App() {
   return(
-    <Content/>
+    <MessengerContent/>
   )
 }
 export default App;

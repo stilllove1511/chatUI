@@ -7,15 +7,15 @@ import reportWebVitals from './reportWebVitals';
 function emitMessage(id){
   setInterval(() => {
     window.dispatchEvent(
-      new CustomEvent(`channel-${id}`,{
+      new CustomEvent(`user-${id}`,{
         detail: `Tin nhắn từ kênh ${id}`
       })
     )
-  }, 500)
+  }, 2000)
 }
 
-emitMessage(1)
-emitMessage(2)
+// emitMessage(1)
+// emitMessage(2)
 emitMessage(3)
 
 ReactDOM.render(
